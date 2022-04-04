@@ -16,15 +16,20 @@ function Form( {onSubmit}) {
                 setNumber(value);
                 break;
             default:
-                console.log('somethisg goes wrong');
+                console.log('something goes wrong');
         }
     }
     
     
     const formSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ name, number })
-        reset();
+        if (name === '' || number === '') {
+            alert('Not enougth information')
+        }
+        else { 
+            onSubmit({ name, number })
+            reset();
+        }
     }
 
     const reset = () => {
@@ -60,7 +65,7 @@ function Form( {onSubmit}) {
                     onChange={formChange}
                     autoComplete="off"
                 />
-                <button className="Btn" onClick={formSubmit} type="submit" >Add contact</button>
+                <button className="Btn"  type="submit" onClick={formSubmit}>Add contact</button>
             </form>
 
         )
